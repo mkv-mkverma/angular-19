@@ -1,0 +1,102 @@
+<div class="row text-center">
+  <div class="col-md-12 m-3">
+    <!-- *ngFor vs @for  -->
+    <h4>Structural Directive: *ngFor vs for()</h4>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-3">
+    <select id="" name="" class="p-2">
+      <!-- <option [value]="employee.id" *ngFor="let employee of employees">
+        {{ employee.email }}
+      </option> -->
+      @for (employee of employees; track employee.id) {
+        <option [value]="employee.id">
+          {{ employee.email }}
+        </option>
+      }
+    </select>
+  </div>
+  <div class="col-md-6">
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor="let employee of employees">
+          <td>{{ employee.id }}</td>
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.department }}</td>
+          <td>{{ employee.email }}</td>
+        </tr> -->
+        @for (
+          employee of employees;
+          track employee.id;
+          let i = $index;
+          let isFirst = $first;
+          let isLast = $last;
+          let isEven = $even;
+          let isOdd = $odd;
+          let count = $count
+        ) {
+          <tr>
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.email }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4" class="text-center">No Data</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-2">
+    <ul class="list-group">
+      <!-- <li class="list-group-item" *ngFor="let company of companyList">
+        {{ company }}
+      </li> -->
+      @for (
+        company of companyList;
+        track company;
+        let i = $index;
+        let isFirst = $first;
+        let isLast = $last;
+        let isEven = $even;
+        let isOdd = $odd;
+        let count = $count
+      ) {
+        <li
+          class="list-group-item {{
+            isEven ? 'list-group-item-success' : 'list-group-item-primary'
+          }}"
+        >
+          {{ i + 1 }}. {{ company }}
+        </li>
+      } @empty {
+        <li>No Data</li>
+      }
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 m-3">
+    <!-- <button class="btn btn-primary m-1" *ngFor="let company of companyList">
+      {{ company }}
+    </button> -->
+    @for (company of companyList; track company) {
+      <button class="btn btn-primary m-1">
+        {{ company }}
+      </button>
+    }
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<p>data-binding works!</p>
+<div align="center">
+  <div>
+    <h4>1. Interpolation</h4>
+    <p>Name: {{ name }}</p>
+    <p>Topic: {{ topic }}</p>
+  </div>
+  <div>
+    <h4>2. Property Binding</h4>
+    <input type="text" [value]="name" />
+    <img [src]="imageUrl" alt="Angular Logo" width="100" />
+  </div>
+  <div>
+    <h4>3. Event Binding</h4>
+    <button (click)="onButtonClick()" class="btn btn-primary">Click Me</button>
+    <select (change)="OnCountryChnage()">
+      <option value="country">Country</option>
+      <option value="india">India</option>
+      <option value="china">China</option>
+      <option value="usa">USA</option>
+    </select>
+  </div>
+  <div>
+    <h4>4. Two-way Binding</h4>
+    <input type="text" [(ngModel)]="text" placeholder="Enter any text"  />
+    <p>Text: {{ text }}</p>
+  </div>
+</div>

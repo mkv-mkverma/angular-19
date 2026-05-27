@@ -1,0 +1,36 @@
+<div class="row text-center">
+  <div class="col-md-12 m-3">
+    <!-- *ngSwitch vs @switch  -->
+    <h4>Structural Directive: *ngSwitch vs switch()</h4>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-12">
+    <button class="btn btn-success m-1" (click)="setGrade(1)">1st Grade</button>
+    <button class="btn btn-primary m-1" (click)="setGrade(2)">2nd Grade</button>
+    <button class="btn btn-warning m-1" (click)="setGrade(3)">3rd Grade</button>
+  </div>
+  <!-- <div [ngSwitch]="grade">
+    <div *ngSwitchCase="1">1st Grade</div>
+    <div *ngSwitchCase="2">2nd Grade</div>
+    <div *ngSwitchCase="3">3rd Grade</div>
+    <div *ngSwitchDefault>No result found ...</div>
+  </div> -->
+  <div class="mt-3">
+    @switch (grade) {
+      @case (1) {
+        <div>1st Grade</div>
+      }
+      @case (2) {
+        <div>2nd Grade</div>
+      }
+      @case (3) {
+        <div>3rd Grade</div>
+      }
+      @default {
+        <div>No result found ...</div>
+      }
+    }
+  </div>
+</div>

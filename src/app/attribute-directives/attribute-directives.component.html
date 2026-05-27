@@ -1,0 +1,72 @@
+<div class="row text-center">
+  <div class="col-md-12">
+    <h4>Example of Attribute Directives</h4>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-4">
+    <h3 [ngClass]="textColor">This is the 1st Example of ngCLass</h3>
+    <h3 [class]="textColor">This is the 2nd Example of ngCLass</h3>
+    <br />
+    <button
+      class="btn btn-primary m-1"
+      (click)="changeTextColor('text-primary')"
+    >
+      Primary
+    </button>
+    <button class="btn btn-danger m-1" (click)="changeTextColor('text-danger')">
+      Danger
+    </button>
+  </div>
+  <div class="col-md-4">
+    <h3 [ngClass]="isTextGreen ? 'text-success' : 'text-warning'">
+      This is the 3rd Example of ngCLass
+    </h3>
+    <input type="checkbox" [(ngModel)]="isTextGreen" /> Change Colour
+  </div>
+  <div class="col-md-4">
+    <h3 [ngClass]="customClass">This is the 4th Example of ngCLass</h3>
+    <select #classSelect (change)="customClass = classSelect.value">
+      <option value="text-success">Green</option>
+      <option value="text-primary">Blue</option>
+      <option value="text-danger">Red</option>
+      <option value="text-warning">Yellow</option>
+    </select>
+  </div>
+</div>
+
+<div class="row text-center">
+  <div class="col-md-12">
+    <h4>Example of Attribute Directives: ngStyle</h4>
+  </div>
+</div>
+
+<hr />
+
+<div class="row text-center">
+  <div class="col-md-4">
+    <h3 [style]="{ color: styleColor, 'font-size': '20px' }">
+      This is an example of ngStyle
+    </h3>
+    <br />
+    <button class="btn btn-dark m-1" (click)="updateColour('lime')">
+      Change to lime
+    </button>
+    <button class="btn btn-dark m-1" (click)="updateColour('pink')">
+      Change to pink
+    </button>
+  </div>
+
+  <div class="col-md-4">
+    <h3
+      [ngStyle]="{
+        color: isTextOrange ? 'orange' : 'purple',
+        'font-size': '20px',
+      }"
+    >
+      This is the 2nd Example of ngStyle
+    </h3>
+    <input type="checkbox" [(ngModel)]="isTextOrange" /> Change Colour
+  </div>
+</div>

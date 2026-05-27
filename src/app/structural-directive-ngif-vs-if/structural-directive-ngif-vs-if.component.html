@@ -1,0 +1,83 @@
+<div class="row text-center">
+  <div class="col-md-12 m-3">
+    <!-- *ngIf vs @if  -->
+    <h4>Structural Directive: *ngIf vs if()</h4>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 m-3">
+    <span class="pointer" (click)="onClickTermsAndCond()">
+      <input type="checkbox" [checked]="isTermsAndCondAccepted" />
+      terms and conditions
+    </span>
+    <div>
+      <!-- <button class="btn btn-success" *ngIf="isTermsAndCondAccepted">
+        Success
+      </button> -->
+
+      @if (isTermsAndCondAccepted) {
+        <button class="btn btn-success">Success</button>
+      }
+    </div>
+  </div>
+  <div class="col-md-4">
+    <!-- <div *ngIf="isInputVisible">
+      <input type="text" value="Angular Learning" />
+    </div> -->
+    @if (isInputVisible) {
+      <input type="text" value="Angular Learning" />
+    }
+    <div class="m-2">
+      <button class="btn btn-primary m-2" (click)="onShowInput()">Show</button>
+      <button class="btn btn-danger m-2" (click)="onHideInput()">Hide</button>
+    </div>
+  </div>
+  <div class="col-md-4 m-3">
+    <h4>Confirm Password</h4>
+    <div>
+      <input
+        type="text"
+        class="mb-1"
+        [(ngModel)]="password"
+        placeholder="Enter Password"
+      />
+    </div>
+    <div>
+      <input
+        type="text"
+        [(ngModel)]="confirmPassword"
+        placeholder="Confirm Password"
+      />
+    </div>
+    <!-- <p
+      [ngClass]="password === confirmPassword ? 'text-success' : 'text-danger'"
+    >
+      {{ password === confirmPassword ? "Match" : "Not Match" }}
+    </p> -->
+
+    <p
+      [ngClass]="password === confirmPassword ? 'text-success' : 'text-danger'"
+    >
+      @if (password.trim() === "" && confirmPassword.trim() === "") {
+        <span class="text-primary">Please Enter Password</span>
+      } @else if (password === confirmPassword) {
+        <span class="text-success">Match</span>
+      } @else if (password !== confirmPassword) {
+        <span class="text-danger">Not Match</span>
+      } @else {
+        <span></span>
+      }
+    </p>
+  </div>
+</div>
+
+<!--
+@if is Angular's new control flow syntax introduced in Angular 17
+for conditional rendering.
+
+It is more readable and compiler optimized compared to *ngIf.
+
+Like *ngIf, it creates and destroys DOM elements
+based on the condition.
+-->

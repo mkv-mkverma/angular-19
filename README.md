@@ -1,5 +1,63 @@
 # Angular19Tutorial
 
+## Setup
+
+nvm install
+nvm list
+nvm use 20.19.2
+
+npm i -g typescript
+
+node -v
+npm -v
+tsc -v
+
+npm i -g @angular/cli will install latest angular version
+
+ng v
+
+create project
+
+ng new angular-19-tutorial
+scss
+SSR y
+Routing y
+
+creating component
+ng g user
+
+## installing Bootstrap in angular project
+
+npm i bootstrap
+
+Add this in angular.json
+
+"node_modules/bootstrap/dist/css/bootstrap.min.css"
+"node_modules/bootstrap/dist/js/bootstrap.min.js"
+
+/**
+ * component directives => used to create reusable components => @Component
+ * structural directives => changes the structure of the DOM => *ngIf, *ngFor, *ngSwitch
+ * attribute directives => changes the appearance or behavior of an element, component, or another directive => ngClass, ngStyle, ngModel
+ */
+
+## Why is @if / @for faster? no CommonModule needed
+
+Because:
+
+compiler-native control flow
+no directive instantiation
+less runtime overhead
+optimized DOM updates
+reduced memory allocations
+better change detection efficiency
+
+in new syntax
+no CommonModule needed
+mandatory tracking function
+
+ng g c structural-directive-ngswitch-vs-switch
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.2.
 
 ## Development server
