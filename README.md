@@ -35,11 +35,12 @@ Add this in angular.json
 "node_modules/bootstrap/dist/css/bootstrap.min.css"
 "node_modules/bootstrap/dist/js/bootstrap.min.js"
 
-/**
- * component directives => used to create reusable components => @Component
- * structural directives => changes the structure of the DOM => *ngIf, *ngFor, *ngSwitch
- * attribute directives => changes the appearance or behavior of an element, component, or another directive => ngClass, ngStyle, ngModel
- */
+/\*\*
+
+- component directives => used to create reusable components => @Component
+- structural directives => changes the structure of the DOM => *ngIf, *ngFor, \*ngSwitch
+- attribute directives => changes the appearance or behavior of an element, component, or another directive => ngClass, ngStyle, ngModel
+  \*/
 
 ## Why is @if / @for faster? no CommonModule needed
 
@@ -57,6 +58,29 @@ no CommonModule needed
 mandatory tracking function
 
 ng g c structural-directive-ngswitch-vs-switch
+
+## Signals
+
+writable
+
+const counter = signal(0)
+counter.set(1)
+counter.update(p=>p+1)
+console.log(counter())
+
+computed
+
+doubleCounter = computed(()=>counter()\*2)
+
+without signals
+
+// const counter = new BehaviorSubject(0);
+// const double = counter.pipe(map((v: number) => v \* 2));
+
+// signals;
+
+// const counterSignal = signal(0);
+// const doubleSignal = computed(() => counterSignal() \* 2);
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.2.
 

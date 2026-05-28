@@ -18,6 +18,16 @@ export class AttributeDirectivesComponent {
 
   styleColor: string = 'orange';
 
+  customStyle = {
+    color: 'purple',
+    'font-size': '20px',
+    border: '1px solid black',
+    padding: '10px',
+    width: 'fit-content',
+    borderRadius: '5px',
+    'box-shadow': '2px 2px 5px rgba(0, 0, 0, 0.3)',
+  };
+
   changeTextColor(color: string) {
     this.textColor = color;
   }
