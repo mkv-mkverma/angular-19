@@ -1,0 +1,69 @@
+<div class="row text-center">
+  <h3 class="text-primary">Async Build-In Pipes</h3>
+
+  <div>Total Employees: {{ (students$ | async)?.length }}</div>
+  <ul>
+    @for (emp of students$ | async; track emp.id) {
+      <li>{{ emp.name }}</li>
+    }
+  </ul>
+
+  <!-- this is will call API twice -->
+  <!-- <div>Total Employees: {{ (employees$ | async)?.length }}</div>
+  <ul>
+    @for (emp of (employees$ | async) || []; track emp.id) {
+      <li>{{ emp.name }}</li>
+    }
+  </ul> -->
+  @let employees = employees$ | async;
+
+  <div>Total Employees: {{ employees?.length }}</div>
+  <ul>
+    @for (emp of employees || []; track emp.id) {
+      <li>{{ emp.name }}</li>
+    }
+  </ul>
+
+  <h3 class="text-primary">Number Build-In Pipes</h3>
+  <p>currency pipe: {{ currencyValue | currency }}</p>
+  <p>currency USD pipe: {{ currencyValue | currency: "USD" }}</p>
+  <p>currency ₹ pipe: {{ currencyValue | currency: "₹" }}</p>
+  <p>currency INR pipe: {{ currencyValue | currency: "INR" }}</p>
+  <p>currency EUR pipe: {{ currencyValue | currency: "EUR" }}</p>
+  <p>percent pipe: {{ percentValue | percent }}</p>
+
+  <p>decimalNumber : {{ decimalNumber }}</p>
+  <!-- {{ value | number:'minIntegerDigits.minFractionDigits-maxFractionDigits' }} -->
+  <p>decimalNumber : {{ decimalNumber | number: "1.2" }}</p>
+  <p>decimalNumber : {{ decimalNumber | number: "1.1-2" }}</p>
+  <p>decimalNumber : {{ decimalNumber | number: "2.2-5" }}</p>
+
+  <h3 class="text-primary">Date Build-In Pipes</h3>
+
+  <p>currentDate : {{ currentDate }}</p>
+  <p>date pipe : {{ currentDate | date }}</p>
+  <p>date pipe : {{ currentDate | date | uppercase }}</p>
+
+  <p>short pipe : {{ currentDate | date: "short" }}</p>
+  <p>shortDate pipe : {{ currentDate | date: "shortDate" }}</p>
+  <p>shortTime pipe : {{ currentDate | date: "shortTime" }}</p>
+
+  <p>medium pipe : {{ currentDate | date: "medium" }}</p>
+  <p>mediumDate pipe : {{ currentDate | date: "mediumDate" }}</p>
+  <p>mediumTime pipe : {{ currentDate | date: "mediumTime" }}</p>
+
+  <h3 class="text-primary">String Build-In Pipes</h3>
+  <p>1. Uppercase: {{ angularPipe | uppercase }}</p>
+  <p>2. Lowercase: {{ angularPipe | lowercase }}</p>
+  <p>3. Titlecase: {{ angularPipe | titlecase }}</p>
+  <p>4. Slice(0:5): {{ angularPipe | slice: 0 : 5 }}</p>
+  <p>5. Slice(4:10): {{ angularPipe | slice: 4 : 10 }}</p>
+  <p>6. Slice(4): {{ angularPipe | slice: 4 }}</p>
+  <p>7. Slice(4:-10): {{ angularPipe | slice: 4 : -10 }}</p>
+  <p>8. Slice(-10): {{ angularPipe | slice: -10 }}</p>
+  <!-- <p>5. Replace: {{ angularPipe | replace: 'Angular' : 'Angular 19' }}</p> -->
+  <p>9. Json: {{ angularPipe | json }}</p>
+  <p>10. Json: {{ numberArray | json }}</p>
+  <p>11. Slice(1:4): {{ numberArray | slice: 1 : 4 }}</p>
+  <pre>12. Json: {{ person | json }}</pre>
+</div>
