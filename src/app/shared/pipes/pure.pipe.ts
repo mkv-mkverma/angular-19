@@ -1,12 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'pure'
+  name: 'pure',
 })
 export class PurePipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(value: unknown): unknown {
+    value = typeof value === 'number' ? value * value : null;
+    return value;
   }
-
 }

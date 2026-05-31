@@ -11,11 +11,14 @@ import {
   AsyncPipe,
   CommonModule,
 } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, of, tap, shareReplay } from 'rxjs';
 import { CustomDatePipe } from '../shared/pipes/custom-date.pipe';
 import { MobilePipe } from '../shared/pipes/mobile.pipe';
+import { PurePipe } from '../shared/pipes/pure.pipe';
+import { ImpurePipe } from '../shared/pipes/impure.pipe';
 
 @Component({
   selector: 'app-build-in-pipes',
@@ -32,12 +35,17 @@ import { MobilePipe } from '../shared/pipes/mobile.pipe';
     AsyncPipe,
     CustomDatePipe,
     MobilePipe,
+    PurePipe,
+    ImpurePipe,
+    FormsModule,
     // CommonModule,
   ],
   templateUrl: './build-in-pipes.component.html',
   styleUrl: './build-in-pipes.component.scss',
 })
 export class BuildInPipesComponent {
+  counter: number = 0;
+  searchTerm: string = '';
   mobileNumber: string = '';
   // mobileNumber: string = '9876543210';
   angularPipe: string = 'angular pipes are awesome';

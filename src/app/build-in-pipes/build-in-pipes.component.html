@@ -3,12 +3,44 @@
   <p>Mobile Number: {{ mobileNumber }}</p>
   <p>Mobile Number: {{ mobileNumber | mobile }}</p>
 
+  <h3 class="text-primary">Pure vs Impure Pipes</h3>
+  <p>Pure Pipe of square: {{ 6 | pure }}</p>
+
+  <!-- Impure Pipe Example -->
+  <div class="mb-4">
+    <h4>
+      Impure Pipe - Search Filter (re-evaluates on every change detection)
+    </h4>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      placeholder="Search employees..."
+      class="form-control mb-2"
+    />
+    <button class="btn btn-secondary mb-2" (click)="counter = counter + 1">
+      Increment Counter: {{ counter }}
+    </button>
+    <p class="text-danger">
+      <small
+        >Notice: Pure pipes = only run when input value changes Impure pipes =
+        run on every change detection cycle</small
+      >
+    </p>
+    @let students = (students$ | async) || [];
+    <ul class="list-unstyled">
+      @for (emp of students | impure: searchTerm; track emp.id) {
+        <li class="badge bg-info m-1">{{ emp.name }} - {{ emp.department }}</li>
+      }
+    </ul>
+  </div>
+
   <h3 class="text-primary">Custom Date Pipes</h3>
 
   <p>currentDate : {{ currentDate }}</p>
   <p>currentDate : {{ currentDate | customDate: "dd MMM YYYY" }}</p>
   <p>currentDate : {{ currentDate | customDate: "dd-MM-YYYY" }}</p>
-  <h3 class="text-primary">Async Build-In Pipes</h3>
+
+  <h3 class="text-primary">Async Build-In Pipes(its impure pipe)</h3>
 
   <div>Total Employees: {{ (students$ | async)?.length }}</div>
   <ul>
