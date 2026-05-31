@@ -1,4 +1,13 @@
 <div class="row text-center">
+  <h3 class="text-primary">Custom Mobile Pipes</h3>
+  <p>Mobile Number: {{ mobileNumber }}</p>
+  <p>Mobile Number: {{ mobileNumber | mobile }}</p>
+
+  <h3 class="text-primary">Custom Date Pipes</h3>
+
+  <p>currentDate : {{ currentDate }}</p>
+  <p>currentDate : {{ currentDate | customDate: "dd MMM YYYY" }}</p>
+  <p>currentDate : {{ currentDate | customDate: "dd-MM-YYYY" }}</p>
   <h3 class="text-primary">Async Build-In Pipes</h3>
 
   <div>Total Employees: {{ (students$ | async)?.length }}</div>

@@ -82,6 +82,13 @@ without signals
 // const counterSignal = signal(0);
 // const doubleSignal = computed(() => counterSignal() \* 2);
 
+TODO
+Hot and cold observable
+
+Hydration
+
+Hot module reload
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.2.
 
 ## Development server

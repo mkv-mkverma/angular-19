@@ -9,10 +9,13 @@ import {
   CurrencyPipe,
   PercentPipe,
   AsyncPipe,
+  CommonModule,
 } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Observable, of, tap, shareReplay } from 'rxjs';
+import { CustomDatePipe } from '../shared/pipes/custom-date.pipe';
+import { MobilePipe } from '../shared/pipes/mobile.pipe';
 
 @Component({
   selector: 'app-build-in-pipes',
@@ -27,11 +30,16 @@ import { Observable, of, tap, shareReplay } from 'rxjs';
     CurrencyPipe,
     PercentPipe,
     AsyncPipe,
+    CustomDatePipe,
+    MobilePipe,
+    // CommonModule,
   ],
   templateUrl: './build-in-pipes.component.html',
   styleUrl: './build-in-pipes.component.scss',
 })
 export class BuildInPipesComponent {
+  mobileNumber: string = '';
+  // mobileNumber: string = '9876543210';
   angularPipe: string = 'angular pipes are awesome';
   numberArray: number[] = [1, 2, 3, 4, 5];
   person = {
