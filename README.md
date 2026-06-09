@@ -59,6 +59,8 @@ mandatory tracking function
 
 ng g c structural-directive-ngswitch-vs-switch
 
+ng g class className
+ng g i interfaceName
 ## Signals
 
 writable

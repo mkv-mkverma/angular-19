@@ -1,0 +1,189 @@
+<div class="container">
+  <!-- Form State Info -->
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">Form State</h5>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-4">
+          <p>
+            <strong>Status:</strong>
+            <span
+              class="badge"
+              [ngClass]="userForm.valid ? 'bg-success' : 'bg-danger'"
+              >{{ userForm.status }}</span
+            >
+          </p>
+          <p>
+            <strong>Touched:</strong>
+            <span class="badge bg-info">{{ userForm.touched }}</span>
+          </p>
+          <p>
+            <strong>Dirty:</strong>
+            <span class="badge bg-warning">{{ userForm.dirty }}</span>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p>
+            <strong>Submitted:</strong>
+            <span class="badge bg-secondary">{{ userForm.submitted }}</span>
+          </p>
+          <p>
+            <strong>Enabled:</strong>
+            <span class="badge bg-success">{{ userForm.enabled }}</span>
+          </p>
+          <p>
+            <strong>Pristine:</strong>
+            <span class="badge bg-info">{{ userForm.pristine }}</span>
+          </p>
+        </div>
+        <div class="col-md-4">
+          <p>
+            <strong>Valid:</strong>
+            <span
+              class="badge"
+              [ngClass]="userForm.valid ? 'bg-success' : 'bg-danger'"
+              >{{ userForm.valid }}</span
+            >
+          </p>
+          <p>
+            <strong>Invalid:</strong>
+            <span
+              class="badge"
+              [ngClass]="userForm.invalid ? 'bg-danger' : 'bg-success'"
+              >{{ userForm.invalid }}</span
+            >
+          </p>
+          <p>
+            <strong>Untouched:</strong>
+            <span class="badge bg-secondary">{{ userForm.untouched }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form Data -->
+  <div class="row mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h6 class="mb-0">Values</h6>
+        </div>
+        <div class="card-body">
+          <pre class="mb-0">{{ userForm.value | json }}</pre>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-secondary text-white">
+          <h6 class="mb-0">Errors</h6>
+        </div>
+        <div class="card-body">
+          <pre class="mb-0">{{ userForm.errors | json }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- userForm is an instance of NgForm -->
+  <!-- #userForm is a template reference variable that allows us to access the form's properties and methods in our component class. -->
+  <form #userForm="ngForm" (ngSubmit)="onSubmitUserForm(userForm)">
+    <h3 class="text-center m-2">Template Driven Form: User Info</h3>
+    <div class="form-group m-2">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        class="form-control"
+        placeholder="Enter First Name"
+        [(ngModel)]="userObject.firstName"
+      />
+    </div>
+    <div class="form-group m-2">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="form-control"
+        placeholder="Enter Last Name"
+        [(ngModel)]="userObject.lastName"
+      />
+    </div>
+    <div class="form-group m-2">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        placeholder="Enter Email"
+        [(ngModel)]="userObject.email"
+        required
+      />
+    </div>
+    <div class="form-group m-2">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        placeholder="Enter Password"
+        [(ngModel)]="userObject.password"
+      />
+    </div>
+    <div class="form-group m-2">
+      <label for="aboutMe">About Me</label>
+      <textarea
+        id="aboutMe"
+        name="aboutMe"
+        class="form-control"
+        placeholder="Enter About Me..."
+        [(ngModel)]="userObject.aboutMe"
+      ></textarea>
+    </div>
+    <div class="form-check m-2">
+      <input
+        type="checkbox"
+        id="terms"
+        name="terms"
+        class="form-check-input"
+        [(ngModel)]="userObject.terms"
+      />
+      <label for="terms" class="form-check-label"
+        >I agree to the terms and conditions</label
+      >
+    </div>
+
+    <button type="submit" class="btn btn-primary m-2">Submit</button>
+
+    <button
+      type="button"
+      class="btn btn-secondary m-2"
+      (click)="setValues(userForm)"
+    >
+      Set Values
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-success m-2"
+      (click)="patchValues(userForm)"
+    >
+      Patch Values
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-warning m-2"
+      (click)="resetForm(userForm)"
+    >
+      Reset Form
+    </button>
+  </form>
+</div>
