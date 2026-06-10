@@ -1,4 +1,184 @@
 <div class="container">
+  <!-- userForm is an instance of NgForm -->
+  <!-- #userForm is a template reference variable that allows us to access the form's properties and methods in our component class. -->
+  <form #userForm="ngForm" (ngSubmit)="onSubmitUserForm(userForm)" noValidate>
+    <h3 class="text-center m-2">Template Driven Form: User Info</h3>
+    <div class="form-group m-2">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        name="firstName"
+        class="form-control"
+        placeholder="Enter First Name"
+        [(ngModel)]="userObject.firstName"
+        #firstName="ngModel"
+        required
+        minlength="2"
+        maxlength="10"
+        pattern="[a-zA-Z]+$"
+      />
+      @if (firstName?.dirty || firstName?.touched) {
+        @if (firstName?.errors?.["required"]) {
+          <div class="text-danger mt-1">First Name is required.</div>
+        }
+        @if (firstName?.errors?.["minlength"]) {
+          <div class="text-danger mt-1">
+            First Name must be at least 2 characters long.
+          </div>
+        }
+        @if (firstName?.errors?.["pattern"]) {
+          <div class="text-danger mt-1">
+            First Name must contain only letters.
+          </div>
+        }
+      }
+    </div>
+    <div class="form-group m-2">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        name="lastName"
+        class="form-control"
+        placeholder="Enter Last Name"
+        [(ngModel)]="userObject.lastName"
+        #lastName="ngModel"
+        required
+        minlength="2"
+        maxlength="10"
+        pattern="[a-zA-Z]+$"
+      />
+      @if (lastName?.dirty || lastName?.touched) {
+        @if (lastName?.errors?.["required"]) {
+          <div class="text-danger mt-1">Last Name is required.</div>
+        }
+        @if (lastName?.errors?.["minlength"]) {
+          <div class="text-danger mt-1">
+            Last Name must be at least 2 characters long.
+          </div>
+        }
+        @if (lastName?.errors?.["pattern"]) {
+          <div class="text-danger mt-1">
+            Last Name must contain only letters.
+          </div>
+        }
+      }
+    </div>
+    <div class="form-group m-2">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        placeholder="Enter Email"
+        [(ngModel)]="userObject.email"
+        #email="ngModel"
+        required
+        email
+      />
+      @if (email?.dirty || email?.touched) {
+        @if (email?.errors?.["required"]) {
+          <div class="text-danger mt-1">Email is required.</div>
+        }
+        @if (email?.errors?.["email"]) {
+          <div class="text-danger mt-1">
+            Please enter a valid email address.
+          </div>
+        }
+      }
+    </div>
+    <div class="form-group m-2">
+      <label for="password">Password</label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        placeholder="Enter Password"
+        [(ngModel)]="userObject.password"
+        #password="ngModel"
+        required
+        minlength="4"
+        maxlength="15"
+      />
+      @if (password?.dirty || password?.touched) {
+        @if (password?.errors?.["required"]) {
+          <div class="text-danger mt-1">Password is required.</div>
+        }
+        @if (password?.errors?.["minlength"]) {
+          <div class="text-danger mt-1">
+            Password must be at least 4 characters long.
+          </div>
+        }
+      }
+    </div>
+    <div class="form-group m-2">
+      <label for="aboutMe">About Me</label>
+      <textarea
+        id="aboutMe"
+        name="aboutMe"
+        class="form-control"
+        placeholder="Enter About Me..."
+        [(ngModel)]="userObject.aboutMe"
+      ></textarea>
+    </div>
+    <div class="form-check m-2">
+      <input
+        type="checkbox"
+        id="terms"
+        name="terms"
+        class="form-check-input"
+        [(ngModel)]="userObject.terms"
+        #terms="ngModel"
+        required
+      />
+      <label for="terms" class="form-check-label"
+        >I agree to the terms and conditions</label
+      >
+      @if (terms?.dirty || terms?.touched) {
+        @if (terms?.errors?.["required"]) {
+          <div class="text-danger mt-1">
+            You must agree to the terms and conditions.
+          </div>
+        }
+      }
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary m-2"
+      [disabled]="!userForm.valid"
+    >
+      Submit
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-secondary m-2"
+      (click)="setValues(userForm)"
+    >
+      Set Values
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-success m-2"
+      (click)="patchValues(userForm)"
+    >
+      Patch Values
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-warning m-2"
+      (click)="resetForm(userForm)"
+    >
+      Reset Form
+    </button>
+  </form>
+
   <!-- Form State Info -->
   <div class="card mb-4">
     <div class="card-header bg-primary text-white">
@@ -87,103 +267,4 @@
       </div>
     </div>
   </div>
-
-  <!-- userForm is an instance of NgForm -->
-  <!-- #userForm is a template reference variable that allows us to access the form's properties and methods in our component class. -->
-  <form #userForm="ngForm" (ngSubmit)="onSubmitUserForm(userForm)">
-    <h3 class="text-center m-2">Template Driven Form: User Info</h3>
-    <div class="form-group m-2">
-      <label for="firstName">First Name</label>
-      <input
-        type="text"
-        id="firstName"
-        name="firstName"
-        class="form-control"
-        placeholder="Enter First Name"
-        [(ngModel)]="userObject.firstName"
-      />
-    </div>
-    <div class="form-group m-2">
-      <label for="lastName">Last Name</label>
-      <input
-        type="text"
-        id="lastName"
-        name="lastName"
-        class="form-control"
-        placeholder="Enter Last Name"
-        [(ngModel)]="userObject.lastName"
-      />
-    </div>
-    <div class="form-group m-2">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        class="form-control"
-        placeholder="Enter Email"
-        [(ngModel)]="userObject.email"
-        required
-      />
-    </div>
-    <div class="form-group m-2">
-      <label for="password">Password</label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        class="form-control"
-        placeholder="Enter Password"
-        [(ngModel)]="userObject.password"
-      />
-    </div>
-    <div class="form-group m-2">
-      <label for="aboutMe">About Me</label>
-      <textarea
-        id="aboutMe"
-        name="aboutMe"
-        class="form-control"
-        placeholder="Enter About Me..."
-        [(ngModel)]="userObject.aboutMe"
-      ></textarea>
-    </div>
-    <div class="form-check m-2">
-      <input
-        type="checkbox"
-        id="terms"
-        name="terms"
-        class="form-check-input"
-        [(ngModel)]="userObject.terms"
-      />
-      <label for="terms" class="form-check-label"
-        >I agree to the terms and conditions</label
-      >
-    </div>
-
-    <button type="submit" class="btn btn-primary m-2">Submit</button>
-
-    <button
-      type="button"
-      class="btn btn-secondary m-2"
-      (click)="setValues(userForm)"
-    >
-      Set Values
-    </button>
-
-    <button
-      type="button"
-      class="btn btn-success m-2"
-      (click)="patchValues(userForm)"
-    >
-      Patch Values
-    </button>
-
-    <button
-      type="button"
-      class="btn btn-warning m-2"
-      (click)="resetForm(userForm)"
-    >
-      Reset Form
-    </button>
-  </form>
 </div>
