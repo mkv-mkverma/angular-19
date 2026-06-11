@@ -1,0 +1,242 @@
+<div class="container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmitFormValue()" novalidate>
+    <h3 class="text-center m-2">Reactive Form: User Info</h3>
+
+    <div class="form-group m-2">
+      <label for="firstName">First Name </label>
+      <input
+        class="form-control"
+        type="text"
+        name="firstName"
+        id="firstName"
+        placeholder="Enter First Name"
+        formControlName="firstName"
+      />
+      @if (f["firstName"].dirty || f["firstName"].touched) {
+        @if (f["firstName"].errors?.["required"]) {
+          <div class="text-danger mt-1">First Name is required.</div>
+        }
+        @if (f["firstName"].errors?.["minlength"]) {
+          <div class="text-danger mt-1">
+            First Name must be at least 2 characters.
+          </div>
+        }
+        @if (f["firstName"].errors?.["pattern"]) {
+          <div class="text-danger mt-1">
+            First Name must contain only letters.
+          </div>
+        }
+      }
+    </div>
+
+    <div class="form-group m-2">
+      <label for="lastName">Last Name </label>
+      <input
+        class="form-control"
+        type="text"
+        name="lastName"
+        id="lastName"
+        placeholder="Enter Last Name"
+        formControlName="lastName"
+      />
+      @if (f["lastName"].dirty || f["lastName"].touched) {
+        @if (f["lastName"].errors?.["required"]) {
+          <div class="text-danger mt-1">Last Name is required.</div>
+        }
+        @if (f["lastName"].errors?.["minlength"]) {
+          <div class="text-danger mt-1">
+            Last Name must be at least 2 characters.
+          </div>
+        }
+        @if (f["lastName"].errors?.["pattern"]) {
+          <div class="text-danger mt-1">
+            Last Name must contain only letters.
+          </div>
+        }
+      }
+    </div>
+
+    <div class="form-group m-2">
+      <label for="email">Email </label>
+      <input
+        class="form-control"
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Enter Email"
+        formControlName="email"
+      />
+      @if (f["email"].dirty || f["email"].touched) {
+        @if (f["email"].errors?.["required"]) {
+          <div class="text-danger mt-1">Email is required.</div>
+        }
+        @if (f["email"].errors?.["email"]) {
+          <div class="text-danger mt-1">Please enter a valid email.</div>
+        }
+      }
+    </div>
+
+    <div class="form-group m-2">
+      <label for="password">Password </label>
+      <input
+        class="form-control"
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Enter Password"
+        formControlName="password"
+      />
+      @if (f["password"].dirty || f["password"].touched) {
+        @if (f["password"].errors?.["required"]) {
+          <div class="text-danger mt-1">Password is required.</div>
+        }
+        @if (f["password"].errors?.["minlength"]) {
+          <div class="text-danger mt-1">
+            Password must be at least 6 characters.
+          </div>
+        }
+      }
+    </div>
+
+    <div class="form-group m-2">
+      <label for="aboutMe">About Me </label>
+      <textarea
+        class="form-control"
+        type="text"
+        name="aboutMe"
+        id="aboutMe"
+        placeholder="Enter About Me"
+        formControlName="aboutMe"
+      ></textarea>
+    </div>
+
+    <div class="form-group" formGroupName="address">
+      <div class="form-group m-2">
+        <label for="zip">Zip Code </label>
+        <input
+          class="form-control mt-2"
+          type="text"
+          name="zip"
+          id="zipCode"
+          placeholder="Enter Zip Code"
+          formControlName="zip"
+        />
+        @if (
+          f["address"].get("zip")?.dirty || f["address"].get("zip")?.touched
+        ) {
+          @if (f["address"].get("zip")?.errors?.["required"]) {
+            <div class="text-danger mt-1">Zip Code is required.</div>
+          }
+          @if (f["address"].get("zip")?.errors?.["pattern"]) {
+            <div class="text-danger mt-1">
+              Zip Code must be a 6-digit number.
+            </div>
+          }
+        }
+      </div>
+
+      <div class="form-group m-2">
+        <label for="state">State </label>
+        <input
+          class="form-control"
+          type="text"
+          name="state"
+          id="state"
+          placeholder="Enter State"
+          formControlName="state"
+        />
+      </div>
+
+      <div class="form-group m-2">
+        <label for="city">City </label>
+        <input
+          class="form-control mt-2"
+          type="text"
+          name="city"
+          id="city"
+          placeholder="Enter City"
+          formControlName="city"
+        />
+      </div>
+    </div>
+
+    <div class="form-group m2" formArrayName="skills">
+      <button type="button" class="btn btn-info m-2" (click)="addSkill()">
+        Add Skill
+      </button>
+      @for (skill of skills.controls; track skill; let i = $index) {
+        <div [formGroupName]="i">
+          <div class="form-group m-2">
+            <label for="skillName">{{ i + 1 }}. Skill Name </label>
+            <input
+              class="form-control"
+              type="text"
+              name="skillName"
+              id="skillName"
+              placeholder="Enter Skill Name"
+              formControlName="skillName"
+            />
+          </div>
+
+          <button
+            type="button"
+            class="btn btn-danger m-2"
+            (click)="removeSkill(i)"
+          >
+            Remove Skill
+          </button>
+        </div>
+      }
+    </div>
+
+    <div class="form-group m-2">
+      <input
+        class="form-check-input me-1"
+        type="checkbox"
+        name="terms"
+        id="terms"
+        formControlName="terms"
+      />
+      <label for="terms"> I agree to the terms and conditions </label>
+      @if (f["terms"].dirty || f["terms"].touched) {
+        @if (f["terms"].errors?.["required"]) {
+          <div class="text-danger mt-1">
+            You must agree to the terms and conditions.
+          </div>
+        }
+      }
+    </div>
+
+    <button
+      class="btn btn-primary m-2"
+      type="submit"
+      [disabled]="!userForm.valid"
+    >
+      Submit
+    </button>
+
+    <button
+      class="btn btn-secondary m-2"
+      type="button"
+      (click)="onSetFormValue()"
+    >
+      Set Values
+    </button>
+
+    <button
+      class="btn btn-success m-2"
+      type="button"
+      (click)="onPatchFormValue()"
+    >
+      Patch Values
+    </button>
+
+    <button
+      class="btn btn-warning m-2"
+      type="button"
+      (click)="onResetFormValue()"
+    >
+      Reset Form
+    </button>
+  </form>
+</div>
