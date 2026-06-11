@@ -57,10 +57,20 @@ in new syntax
 no CommonModule needed
 mandatory tracking function
 
-ng g c structural-directive-ngswitch-vs-switch
+- ng g c componentName
+- ng g s serviceName
+- ng g class className
+- ng g i interfaceName
 
-ng g class className
-ng g i interfaceName
+## we can create our own local json server
+- npm i -g json-server@0
+db.json in root level
+{
+  Users:[{},{},...]
+}
+json-server -w db.json
+http://localhost:3000/Users
+
 ## Signals
 
 writable

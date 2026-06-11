@@ -18,7 +18,7 @@ export class ProfileService {
       aboutMe:
         'Software developer with a passion for learning new technologies.',
       age: 30,
-      imageUrl: '/user-profile-avatar.png',
+      imageUrl: '/user-profile-avatar.svg',
       address: { city: 'New York', state: 'NY', zip: '10001' },
     },
     {
@@ -27,7 +27,7 @@ export class ProfileService {
       email: 'jane.smith@example.com',
       aboutMe: 'Product manager focused on user experience.',
       age: 28,
-      imageUrl: '/user-profile-avatar.png',
+      imageUrl: '/user-profile-avatar.svg',
       address: { city: 'San Francisco', state: 'CA', zip: '94102' },
     },
     {
@@ -36,7 +36,7 @@ export class ProfileService {
       email: 'mike.j@example.com',
       aboutMe: 'Full-stack developer and open-source enthusiast.',
       age: 16,
-      imageUrl: '/user-profile-avatar.png',
+      imageUrl: '/user-profile-avatar.svg',
       address: { city: 'Austin', state: 'TX', zip: '78701' },
     },
   ];
