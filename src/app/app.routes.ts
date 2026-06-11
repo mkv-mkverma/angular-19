@@ -7,10 +7,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { BuildInPipesComponent } from './build-in-pipes/build-in-pipes.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
+import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'user', pathMatch: 'full' }, // redirects ONLY when URL is EXACTLY empty
   { path: 'user', component: UserComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'attribute-directives', component: AttributeDirectivesComponent },

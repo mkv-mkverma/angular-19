@@ -1,0 +1,78 @@
+<div class="container">
+  <h2 class="mb-4 mt-3">User Profiles</h2>
+  <h4 class="mb-4 mt-3">API Users</h4>
+  <div class="row">
+    @let usersApi = users$ | async;
+    @for (user of usersApi; track user.email) {
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <img
+              [src]="user.imageUrl || '/user-profile-avatar.png'"
+              [alt]="user.name"
+              class="rounded-circle mb-3"
+              height="100"
+              width="100"
+              priority
+            />
+            <h5 class="card-title">{{ user.name }}</h5>
+            <p class="card-text text-muted small">{{ user.email }}</p>
+            <p class="card-text">{{ user.aboutMe }}</p>
+            @if (profileService.isEligibleForSubcription(user)) {
+              <div class="alert alert-success mt-3" role="alert">
+                Eligible for Subscription
+              </div>
+            } @else {
+              <div class="alert alert-danger mt-3" role="alert">
+                Not Eligible for Subscription
+              </div>
+            }
+            <hr />
+            <p class="mb-2"><strong>Age:</strong> {{ user.age }}</p>
+            <p class="mb-0">
+              <strong>Location:</strong> {{ user.address?.city }},
+              {{ user.address?.state }}
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+  <h4>Local Users</h4>
+  <div class="row">
+    @for (user of localUsers; track user.email) {
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body text-center">
+            <img
+              [src]="user.imageUrl"
+              [alt]="user.firstName"
+              class="rounded-circle mb-3"
+              height="100"
+              width="100"
+              priority
+            />
+            <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+            <p class="card-text text-muted small">{{ user.email }}</p>
+            <p class="card-text">{{ user.aboutMe }}</p>
+            @if (profileService.isEligibleForSubcription(user)) {
+              <div class="alert alert-success mt-3" role="alert">
+                Eligible for Subscription
+              </div>
+            } @else {
+              <div class="alert alert-danger mt-3" role="alert">
+                Not Eligible for Subscription
+              </div>
+            }
+            <hr />
+            <p class="mb-2"><strong>Age:</strong> {{ user.age }}</p>
+            <p class="mb-0">
+              <strong>Location:</strong> {{ user.address?.city }},
+              {{ user.address?.state }}
+            </p>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>
