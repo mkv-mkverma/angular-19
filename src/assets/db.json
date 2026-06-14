@@ -1,0 +1,33 @@
+{
+  "users": [
+    {
+      "name": "Manish Verma",
+      "email": "manishverma.cse@gmail.com",
+      "aboutMe": "myself",
+      "age": 30,
+      "address": {
+        "street": "VJ27+M7, Begur - Koppa Rd, Mylasandra,",
+        "city": "BENGALURU",
+        "state": "KARNATAKA",
+        "zip": 560100
+      },
+      "imageUrl": "",
+      "id": "z_2UCf8yq10"
+    },
+    {
+      "name": "Rashmi Mishra",
+      "email": "rashmi@gmail.com",
+      "aboutMe": "She is HR",
+      "age": 28,
+      "address": {
+        "street": "104/1 Begur Hobli, Doddakamanahalli Main Road,",
+        "city": "Bengaluru",
+        "state": "Karnataka",
+        "zip": 560076
+      },
+      "imageUrl": "",
+      "id": "cEhFxe6zlY4"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

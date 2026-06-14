@@ -29,10 +29,14 @@ ng g user
 ## installing Bootstrap in angular project
 
 npm i bootstrap
+npm i bootstrap-icons
 
 Add this in angular.json
-
+styles
 "node_modules/bootstrap/dist/css/bootstrap.min.css"
+"node_modules/bootstrap-icons/font/bootstrap-icons.css"
+
+scripts
 "node_modules/bootstrap/dist/js/bootstrap.min.js"
 
 /\*\*
@@ -63,13 +67,14 @@ mandatory tracking function
 - ng g i interfaceName
 
 ## we can create our own local json server
+
 - npm i -g json-server@0
-db.json in root level
-{
+  db.json in root level
+  {
   Users:[{},{},...]
-}
-json-server -w db.json
-http://localhost:3000/Users
+  }
+  json-server -w db.json
+  http://localhost:3000/Users
 
 ## Signals
 

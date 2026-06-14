@@ -8,6 +8,8 @@ import { BuildInPipesComponent } from './build-in-pipes/build-in-pipes.component
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CurdComponent } from './curd/curd.component';
+import { CurdFormComponent } from './curd/curd-form/curd-form.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'user', pathMatch: 'full' }, // redirects ONLY when URL is EXACTLY empty
@@ -19,6 +21,18 @@ export const routes: Routes = [
   { path: 'build-in-pipes', component: BuildInPipesComponent },
   { path: 'template-driven-forms', component: TemplateDrivenFormComponent },
   { path: 'reactive-forms', component: ReactiveFormComponent },
+  { path: 'crud-app', component: CurdComponent },
+  { path: 'crud/create', component: CurdFormComponent },
+  {
+    path: 'crud/:id/view',
+    component: CurdFormComponent,
+    data: { mode: 'view' },
+  },
+  {
+    path: 'crud/:id/edit',
+    component: CurdFormComponent,
+    data: { mode: 'edit' },
+  },
   { path: '**', component: PageNotFoundComponent }, // wildcard route, matches any URL that hasn't been matched by previous routes
 ];
 
