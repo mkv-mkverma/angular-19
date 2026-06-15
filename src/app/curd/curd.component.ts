@@ -4,10 +4,11 @@ import { Person } from '../user';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { ReusableComponentComponent } from "../reusable-component/reusable-component.component";
 
 @Component({
   selector: 'app-curd',
-  imports: [CommonModule],
+  imports: [CommonModule, ReusableComponentComponent],
   templateUrl: './curd.component.html',
   styleUrl: './curd.component.scss',
 })
