@@ -10,6 +10,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CurdComponent } from './curd/curd.component';
 import { CurdFormComponent } from './curd/curd-form/curd-form.component';
+import { ResourceApiComponent } from './resource-api/resource-api.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'user', pathMatch: 'full' }, // redirects ONLY when URL is EXACTLY empty
@@ -23,6 +24,7 @@ export const routes: Routes = [
   { path: 'reactive-forms', component: ReactiveFormComponent },
   { path: 'crud-app', component: CurdComponent },
   { path: 'crud/create', component: CurdFormComponent },
+  { path: 'resource', component: ResourceApiComponent },
   {
     path: 'crud/:id/view',
     component: CurdFormComponent,

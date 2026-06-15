@@ -39,6 +39,137 @@ styles
 scripts
 "node_modules/bootstrap/dist/js/bootstrap.min.js"
 
+## Json Server
+
+npm i json-server --save-dev
+
+npx json-server src/assets/db.json
+http://localhost:3000/Users
+
+or
+
+in package.json add
+"json-server": "json-server src/assets/db.json"
+
+npm run json-server
+
+if want to run concurrently
+npm install --save-dev concurrently
+"dev": "concurrently \"npm:start\" \"npm:mock-api\"",
+
+db.json in root level
+
+{
+Users:[{},{},...]
+}
+
+## Resource and RxResource
+
+Resource stores latest value and When component destroyed Resource destroyed Data gone
+
+rxResource() is Angular's modern async state management primitive built on Signals. It integrates with HttpClient Observables, automatically tracks loading, error, and success states, supports reactive parameters, and eliminates much of the boilerplate around subscriptions, async pipes, and manual loading indicators.
+
+resource()
+
+Works with: Promise, async/await, fetch()
+
+users = resource({
+
+loader: async () => {
+
+    const response = await fetch('/users');
+
+    return response.json();
+
+}
+
+});
+
+rxResource()
+
+Works with: Observable, HttpClient, RxJS
+
+// service
+rxResourceData = rxResource({
+
+loader: () => this.http.get('/users')
+
+});
+
+//component
+users = this.resourceService.rxResourceData;
+
+@if(users.isLoading()) {
+
+Loading...
+
+}@else if(users.error()){
+
+Error message
+
+}
+
+@else if(users.hasValue()) {
+
+{{ users.value() | json }}
+
+}
+
+this.users.reload(); // refresh data
+
+Life Cycle
+
+Component Loads
+
+      |
+
+      V
+
+Loader Executes
+
+      |
+
+      V
+
+Loading = true
+
+      |
+
+      V
+
+API Returns
+
+      |
+
+      V
+
+value() populated
+
+Loading = false
+
+userId = signal('1');
+or
+userId = toSignal(
+this.route.paramMap.pipe(
+map(params => params.get('id'))
+)
+);
+
+user = rxResource({
+params: () => ({
+id: this.userId()
+}),
+
+loader: ({ params }) =>
+this.http.get(`/users/${params.id}`)
+});
+
+on route change
+this.userId.set('2');
+
+Why use track user.user_id
+
+Angular uses the tracking expression to uniquely identify items. When data changes, Angular updates only affected rows instead of recreating the entire list, which improves rendering performance for large datasets.
 /\*\*
 
 - component directives => used to create reusable components => @Component
