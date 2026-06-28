@@ -11,11 +11,18 @@ import { ProfileComponent } from './profile/profile.component';
 import { CurdComponent } from './curd/curd.component';
 import { CurdFormComponent } from './curd/curd-form/curd-form.component';
 import { ResourceApiComponent } from './resource-api/resource-api.component';
+import { ParentComponent } from './parent/parent.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'user', pathMatch: 'full' }, // redirects ONLY when URL is EXACTLY empty
   { path: 'user', component: UserComponent },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./profile/profile.component').then((c) => c.ProfileComponent),
+  },
+  // { path: 'profile', component: ProfileComponent },
+  { path: 'parent', component: ParentComponent },
   { path: 'data-binding', component: DataBindingComponent },
   { path: 'directives', component: DirectivesComponent },
   { path: 'attribute-directives', component: AttributeDirectivesComponent },

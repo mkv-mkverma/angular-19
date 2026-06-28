@@ -230,6 +230,43 @@ without signals
 // const counterSignal = signal(0);
 // const doubleSignal = computed(() => counterSignal() \* 2);
 
+## JIT vs AOT
+
+JIT compiles Angular templates in the browser at runtime, requiring the Angular compiler to be shipped with the application.
+This results in slower startup and runtime template error detection.
+JIT compiles Angular templates in the browser at runtime
+compile code + compiler
+runtime template error detection not at compile time
+Initial load is slower
+dev
+ng serve --aot=false
+
+AOI ccompiles templates during the build process
+Default from Angular 9
+produces smaller and faster bundles
+Initial load is faster
+HTML + component + TS => converted into js
+catches template errors before deployment
+secure
+prod
+
+## view Encapsulation
+
+Hide data from the outside world
+
+encapsulation: ViewEncapsulation.emulated [default]
+only to its component (Component styles stay inside component.)
+
+encapsulation: ViewEncapsulation.ShadowDom
+to component and its children and cannot leake outside (Web Components, lib)
+
+encapsulation: ViewEncapsulation.None it will leake and apply to global
+Global themes, Bootstrap overrides, PrimeNG customizations
+
+## What is a Decorator in Angular?
+
+A decorator is a special TypeScript feature that adds metadata to a class, property, method, or parameter.
+
 TODO
 Hot and cold observable
 

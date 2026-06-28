@@ -1,0 +1,13 @@
+<div class="container">
+  <p>parent works!</p>
+  <app-child [text]="message">
+    <h2>This is inside app-child</h2>
+  </app-child>
+
+  <app-child [text]="'second time calling app-child'">
+    <h2 class="text-warning">This is called in 2nd time</h2>
+    <button class="btn btn-info">Click me</button>
+  </app-child>
+</div>
+
+<p appBetterHighlighter>This is for Directive</p>
